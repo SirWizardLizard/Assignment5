@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Zechariah Burrus
+ * Assignment 4
+ * Gem collision and destruction as well as score incrementation when a 2d collision happens.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,17 +17,20 @@ public class GemBehaviour : MonoBehaviour
 
 	private float durationOfCollectedParticleSystem;
 
+    private DisplayScore displayScore;
 
 	void Start()
 	{
-		durationOfCollectedParticleSystem = collectedParticleSystem.GetComponent<ParticleSystem>().main.duration;
+        displayScore = GameObject.FindGameObjectWithTag("Score").GetComponent<DisplayScore>();
+        durationOfCollectedParticleSystem = collectedParticleSystem.GetComponent<ParticleSystem>().main.duration;
 	}
 
 	void OnTriggerEnter2D(Collider2D theCollider)
 	{
 		if (theCollider.CompareTag ("Player")) {
 			GemCollected ();
-		}
+            displayScore.score++;
+        }
 	}
 
 	void GemCollected()
@@ -36,5 +45,5 @@ public class GemBehaviour : MonoBehaviour
 	void DeactivateGemGameObject()
 	{
 		gameObject.SetActive (false);
-	}
+    }
 }

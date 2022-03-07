@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Zechariah Burrus
+ * Assignment 4
+ * Generic player Controller
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
